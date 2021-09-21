@@ -109,3 +109,13 @@ footer{
 footer h1{
     font-weight: 100;
 }
+.pDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: red;
+}
+.visiblity{
+    visibility: hidden;
+}

@@ -1,4 +1,24 @@
-const App = (newObj) => {
+import kelvinToCelsius from './celsius';
+import kelvinToFahrenheit from './fahrenheit.js';
+
+let temp;
+let fellsLike;
+let tempMin;
+let tempMax;
+
+const app = (newObj, temperatureFormula = 'C') => {
+
+    if(temperatureFormula == 'C'){
+        temp = kelvinToCelsius(newObj.main.temp).toFixed(2);
+        fellsLike = kelvinToCelsius(newObj.main.feels_like).toFixed(2);
+        tempMin = kelvinToCelsius(newObj.main.temp_min).toFixed(2);
+        tempMax = kelvinToCelsius(newObj.main.temp_max).toFixed(2);
+    }else if(temperatureFormula == 'F'){
+        temp = kelvinToFahrenheit(newObj.main.temp).toFixed(2);
+        fellsLike = kelvinToFahrenheit(newObj.main.feels_like).toFixed(2);
+        tempMin = kelvinToFahrenheit(newObj.main.temp_min).toFixed(2);
+        tempMax = kelvinToFahrenheit(newObj.main.temp_max).toFixed(2);
+    }
     
     const root = document.querySelector('.root');
 
@@ -22,11 +42,13 @@ const App = (newObj) => {
 
     const input = document.createElement('input');
     input.type = 'text';
+    input.classList.add('input');
 
     form.appendChild(input);
 
     const button = document.createElement('button');
     button.type = 'submit';
+    button.classList.add('button');
     button.textContent = 'search';
 
     form.appendChild(button);
@@ -49,7 +71,7 @@ const App = (newObj) => {
 
     const temperature = document.createElement('div');
     temperature.classList.add('temperature');
-    temperature.textContent = newObj.main.temp;
+    temperature.textContent = `${temp}^${temperatureFormula}`;
 
     weather.appendChild(temperature);
 
@@ -68,7 +90,7 @@ const App = (newObj) => {
 
     const fells = document.createElement('div');
     fells.classList.add('fells');
-    fells.textContent = `Fells like: ${newObj.main.feels_like}`;
+    fells.textContent = `Fells like: ${fellsLike}`;
 
     card.appendChild(fells);
 
@@ -89,13 +111,13 @@ const App = (newObj) => {
 
     const minTemp = document.createElement('div');
     minTemp.classList.add('minTemp');
-    minTemp.textContent = `minTemp: ${newObj.main.temp_min}`;
+    minTemp.textContent = `minTemp: ${tempMin}`;
 
     maxAndMin.appendChild(minTemp);
 
     const maxTemp = document.createElement('div');
     maxTemp.classList.add('maxTemp');
-    maxTemp.textContent = `maxTemp: ${newObj.main.temp_max}`;
+    maxTemp.textContent = `maxTemp: ${tempMax}`;
 
     maxAndMin.appendChild(maxTemp);
 
@@ -110,11 +132,11 @@ const App = (newObj) => {
     
     const footerH1 = document.createElement('h1');
     footerH1.classList.add('footer');
-    footerH1.textContent = 'change C to F';
+    footerH1.textContent = 'change C or F';
 
     footer.appendChild(footerH1);
 
     root.appendChild(footer);
 }
 
-export default App;
+export default app;
