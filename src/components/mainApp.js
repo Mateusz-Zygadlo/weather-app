@@ -6,7 +6,7 @@ let fellsLike;
 let tempMin;
 let tempMax;
 
-const app = (newObj, temperatureFormula = 'C') => {
+const app = (newObj, temperatureFormula) => {
 
     if(temperatureFormula == 'C'){
         temp = kelvinToCelsius(newObj.main.temp).toFixed(2);

@@ -51,7 +51,7 @@ button{
 }
 .card{
     width: 350px;
-    background-color: #272640;
+    background-color: black;
     color: white;
     margin: 20px auto;
     display: flex;
@@ -101,21 +101,12 @@ footer{
     left: 0;
     width: 100vw;
     height: 50px;
-    background-color: white;
+    background-color: black;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 footer h1{
     font-weight: 100;
-}
-.pDiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    color: red;
-}
-.visiblity{
-    visibility: hidden;
 }

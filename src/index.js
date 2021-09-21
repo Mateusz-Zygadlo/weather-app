@@ -8,16 +8,12 @@ async function getData(localization){
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localization}&appid=9ef11235afd6c1b84dcabb6223277f68`, {mode: 'cors'});
         weatherData = await response.json();
 
-        app(weatherData);
+        app(weatherData, 'C');
         return weatherData;
     }catch(err){
-        const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=boston&appid=9ef11235afd6c1b84dcabb6223277f68', {mode: 'cors'});
-        weatherData = await response.json();
-
-        app(weatherData);
         alert('this city was not found try again');
 
-        return weatherData;
+        return;
     }
 }
 
@@ -46,7 +42,7 @@ document.addEventListener('click', (e) => {
     if(e.target.classList.contains('button')){
         if(input.value){
             getData(input.value);
-            app(weatherData);
+            app(weatherData, temperatureChange);
         }
 
         return;
